@@ -46,6 +46,9 @@ class LinkedList {
   }
 
   get headvalue() {
+    if (!this.head) {
+      return null;
+    }
     return this.head.value;
   }
 
@@ -156,3 +159,5 @@ console.log(testList.contains(5));
 console.log(testList.size());
 console.log(testList.find(10));
 console.log(testList.toString());
+
+module.exports = LinkedList;
