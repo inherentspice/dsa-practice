@@ -95,3 +95,9 @@ test("insertAt function inserts a new node in the correct position", () => {
   expect(testList.find("Aladdin")).toBe(3);
   expect(() => {testList.insertAt("Bitcoin", 27)}).toThrow(RangeError);
 })
+
+test("removeAt function removes node from the correct position", () => {
+  testList.removeAt(3);
+  expect(testList.find("Aladdin")).toBe(null);
+  expect(() => {testList.removeAt(15)}).toThrow(RangeError);
+})
