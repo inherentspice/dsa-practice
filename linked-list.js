@@ -43,6 +43,37 @@ class LinkedList {
     }
     return count;
   }
+
+  get headvalue() {
+    return this.head.value;
+  }
+
+  get tailvalue() {
+    if (this.head===null) {
+      return null;
+    }
+
+    let curr = this.head;
+
+    while(curr.next) {
+      curr = curr.next;
+    }
+    return curr.value;
+  }
+
+  at(value) {
+    let curr = this.head;
+    let count = 0;
+    while (curr && count < value) {
+      if (!curr.next) {
+        throw new RangeError("Index is outside the bounds of the Linked List")
+      }
+      curr = curr.next;
+      count++;
+    }
+
+    return count===value ? curr.next.value : null;
+  }
 }
 
 class Node {
@@ -54,6 +85,9 @@ class Node {
 
 
 let testList = new LinkedList();
-testList.prepend(1)
-testList.append(3)
-console.log(testList.size())
+testList.prepend(1);
+testList.append(3);
+console.log(testList.size());
+console.log(testList.headvalue);
+console.log(testList.tailvalue);
+console.log(testList.at(1));
