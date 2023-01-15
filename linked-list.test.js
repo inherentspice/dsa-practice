@@ -50,7 +50,28 @@ test("pop removes the last Node from the Linked List", () => {
   expect(testList.size()).toBe(2);
 })
 
-// contains
+test("contains function returns true if value exists in Linked List", () => {
+  testList.append(15);
+  expect(testList.contains(15)).toBe(true);
+  expect(testList.contains(5)).toBe(true);
+  expect(testList.contains(1)).toBe(true);
+})
+
+test("contains function returns false if value doesn't exist", () => {
+  expect(testList.contains(14)).toBe(false);
+  expect(testList.contains("Penguin")).toBe(false);
+})
+
+test("find function returns index if found", () => {
+  expect(testList.find(15)).toBe(2);
+  expect(testList.find(5)).toBe(0);
+  expect(testList.find(1)).toBe(1);
+})
+
+test("find function returns null if not in Linked List", () => {
+  expect(testList.find(42)).toBe(null);
+  expect(testList.find("Elephant")).toBe(null);
+})
 // find
 // toString
 // different data types
