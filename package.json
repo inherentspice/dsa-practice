@@ -1,0 +1,19 @@
+{
+  "name": "dsa-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "linked-list.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inherentspice/dsa-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inherentspice/dsa-practice/issues"
+  },
+  "homepage": "https://github.com/inherentspice/dsa-practice#readme"
+}
