@@ -131,6 +131,21 @@ class LinkedList {
     stringified += "null"
     return stringified;
   }
+
+  insertAt(value, index) {
+    let curr = this.head;
+    let count = 0;
+    while (curr) {
+      if (count + 1 === index) {
+        let newNode = new Node(value, curr.next);
+        curr.next = newNode;
+        return
+      }
+      curr = curr.next;
+      count++;
+    }
+  throw new RangeError("Index provided is larger than the size of the Linked List");
+  }
 }
 
 class Node {
@@ -139,25 +154,5 @@ class Node {
     this.next = next;
   }
 }
-
-
-let testList = new LinkedList();
-testList.prepend(1);
-console.log(testList.toString());
-testList.append(10);
-testList.append(3);
-console.log(testList.size());
-console.log(testList.headvalue);
-console.log(testList.tailvalue);
-console.log(testList.toString());
-console.log(testList.at(1));
-testList.pop();
-console.log(testList.tailvalue);
-console.log(testList.headvalue);
-console.log(testList.contains(1));
-console.log(testList.contains(5));
-console.log(testList.size());
-console.log(testList.find(10));
-console.log(testList.toString());
 
 module.exports = LinkedList;

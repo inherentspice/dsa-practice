@@ -90,5 +90,8 @@ test("Methods work with strings", () => {
   expect(testList.toString()).toBe(expected);
 })
 
-// different data types
-// toString
+test("insertAt function inserts a new node in the correct position", () => {
+  testList.insertAt("Aladdin", 3);
+  expect(testList.find("Aladdin")).toBe(3);
+  expect(() => {testList.insertAt("Bitcoin", 27)}).toThrow(RangeError);
+})
