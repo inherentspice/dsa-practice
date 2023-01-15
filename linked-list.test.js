@@ -1,5 +1,4 @@
 const LinkedList = require("./linked-list");
-
 const testList = new LinkedList();
 
 test("Linked List initializes with a header of null", () => {
@@ -72,7 +71,24 @@ test("find function returns null if not in Linked List", () => {
   expect(testList.find(42)).toBe(null);
   expect(testList.find("Elephant")).toBe(null);
 })
-// find
-// toString
+
+test("toString function returns correct string representation", () => {
+  const expected = "( 5 ) => ( 1 ) => ( 15 ) => null"
+  expect(testList.toString()).toBe(expected);
+})
+
+test("Methods work with strings", () => {
+  testList.prepend("Polar Bear");
+  testList.append("Puffer Fish");
+  expect(testList.size()).toBe(5);
+  expect(testList.at(0)).toBe("Polar Bear");
+  expect(testList.at(4)).toBe("Puffer Fish");
+  expect(testList.contains("Polar Bear")).toBe(true);
+  expect(testList.find("Puffer Fish")).toBe(4);
+
+  const expected = "( Polar Bear ) => ( 5 ) => ( 1 ) => ( 15 ) => ( Puffer Fish ) => null"
+  expect(testList.toString()).toBe(expected);
+})
+
 // different data types
 // toString
