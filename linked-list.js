@@ -76,7 +76,7 @@ class LinkedList {
       count++;
     }
 
-    return count===value ? curr.next.value : null;
+    return count===value ? curr.value : null;
   }
 
   pop() {

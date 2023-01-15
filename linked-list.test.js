@@ -32,3 +32,26 @@ test("Append adds value to the tail of the Linked List", () => {
   testList.append(10);
   expect(testList.tailvalue).toBe(10);
 })
+
+test("size function returns correct value after append and prepend", () => {
+  expect(testList.size()).toBe(3);
+})
+
+test("at function returns the correct index of a passed value", () => {
+  expect(testList.at(1)).toBe(1);
+  expect(testList.at(2)).toBe(10);
+  expect(() => {testList.at(3)}).toThrow(RangeError);
+})
+
+test("pop removes the last Node from the Linked List", () => {
+  testList.pop()
+  expect(testList.headvalue).toBe(5);
+  expect(testList.tailvalue).toBe(1);
+  expect(testList.size()).toBe(2);
+})
+
+// contains
+// find
+// toString
+// different data types
+// toString
