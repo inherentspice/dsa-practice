@@ -23,6 +23,7 @@ class LinkedList {
   prepend(value) {
     if (this.head===null) {
       this.head = new Node(value, null);
+      return
     }
 
     let temp = this.head;
@@ -37,7 +38,7 @@ class LinkedList {
     let count = 0;
     let curr = this.head;
 
-    while (curr.next !== null) {
+    while (curr) {
       curr = curr.next;
       count++;
     }
@@ -74,6 +75,59 @@ class LinkedList {
 
     return count===value ? curr.next.value : null;
   }
+
+  pop() {
+    if (!this.head) {
+      throw new Error("Linked List has no items to remove");
+    }
+    if (!this.head.next) {
+      this.head = null;
+    }
+
+    let curr = this.head;
+    while (curr.next.next) {
+      curr = curr.next;
+    }
+
+    curr.next = null;
+  }
+
+  contains(value) {
+    let curr = this.head;
+
+    while (curr) {
+      if (curr.value===value) {
+        return true
+      }
+      curr = curr.next;
+    }
+    return false
+  }
+
+  find(value) {
+    let curr = this.head;
+    let index = 0;
+
+    while (curr) {
+      if (curr.value === value){
+        return index;
+      }
+      curr = curr.next;
+      index++;
+    }
+    return null;
+  }
+
+  toString() {
+    let curr = this.head;
+    let stringified = "";
+    while (curr) {
+      stringified += `( ${curr.value} ) => `
+      curr = curr.next;
+    }
+    stringified += "null"
+    return stringified;
+  }
 }
 
 class Node {
@@ -86,8 +140,19 @@ class Node {
 
 let testList = new LinkedList();
 testList.prepend(1);
+console.log(testList.toString());
+testList.append(10);
 testList.append(3);
 console.log(testList.size());
 console.log(testList.headvalue);
 console.log(testList.tailvalue);
+console.log(testList.toString());
 console.log(testList.at(1));
+testList.pop();
+console.log(testList.tailvalue);
+console.log(testList.headvalue);
+console.log(testList.contains(1));
+console.log(testList.contains(5));
+console.log(testList.size());
+console.log(testList.find(10));
+console.log(testList.toString());
