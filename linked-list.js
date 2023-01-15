@@ -146,6 +146,21 @@ class LinkedList {
     }
   throw new RangeError("Index provided is larger than the size of the Linked List");
   }
+
+  removeAt(index) {
+    let count = 0;
+    let curr = this.head;
+
+    while (curr) {
+      if (count + 1 === index) {
+        curr.next = curr.next.next
+        return
+      }
+      curr = curr.next;
+      count++;
+    }
+    throw new RangeError("Index provided does not exist in the Linked List");
+  }
 }
 
 class Node {
