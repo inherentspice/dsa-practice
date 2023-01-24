@@ -40,7 +40,76 @@ class BinarySearchTree {
       this.prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
   }
+
+  insert(value) {
+    let node = new TreeNode(value);
+    let tempRoot = this.root;
+    if (!tempRoot) {
+      root = node;
+      return;
+    }
+
+    let prev = null;
+    while (tempRoot) {
+      if (tempRoot.value > value) {
+        prev = tempRoot;
+        tempRoot = tempRoot.left;
+      } else if (tempRoot.value < value) {
+        prev = tempRoot;
+        tempRoot = tempRoot.right;
+      }
+    }
+    if (prev.value > value) {
+      prev.left = node;
+    } else {
+      prev.right = node;
+    }
+
+  }
+
+  delete(value) {
+    // three cases: no children, one child, two children
+    let tempRoot = this.root;
+    let prev = null;
+    while (tempRoot) {
+      if (tempRoot.value === value) {
+        if (!tempRoot.left && !tempRoot.right) {
+          prev.left.value === value ? prev.left = null : prev.right = null;
+          tempRoot = null;
+          return
+        }
+      }
+      if (tempRoot.value > value) {
+        prev = tempRoot;
+        tempRoot = tempRoot.left;
+      } else if (tempRoot.value < value) {
+        prev = tempRoot;
+        tempRoot = tempRoot.right;
+      }
+    }
+  }
+
+  find(value) {
+    let currRoot = this.root;
+
+    while (currRoot) {
+      if (currRoot.value === value) {
+        return currRoot
+      } else if (currRoot.value > value) {
+        currRoot = currRoot.left;
+      } else {
+        currRoot = currRoot.right;
+      }
+    }
+
+    return null;
+  }
 }
 
 let testTree = new BinarySearchTree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+testTree.prettyPrint(testTree.root)
+console.log(testTree.find(23));
+console.log(testTree.insert(6));
+console.log(testTree.find(6));
+console.log(testTree.delete(1));
 testTree.prettyPrint(testTree.root)
